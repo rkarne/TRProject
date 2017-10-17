@@ -1,3 +1,10 @@
+<%-- 
+    Document   : index
+    Created on : 17-Oct-2017, 4:26:56 AM
+    Author     : muqeed
+--%>
+
+<%@page contentType="text/html" language="java" session="true" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>

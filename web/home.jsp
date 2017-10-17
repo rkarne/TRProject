@@ -21,6 +21,10 @@
   <!-- Include Bootstrap-select CSS, JS -->
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
+<!-- Include Bootstrap Datepicker -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
 
   <style>
   body {
@@ -221,6 +225,7 @@
         <li><a href="#portfolio">PORTFOLIO</a></li>
        <!-- <li><a href="#pricing">PRICING</a></li> -->
         <li><a href="#contact">CONTACT</a></li>
+        <li><a href="LogoutServlet">LOGOUT</a></li> 
       </ul>
     </div>
   </div>
@@ -229,22 +234,13 @@
 <!-- Container (About Section) -->
 <div id="about" class="container-fluid">
   <div class="row">
-<!--    <div class="col-sm-8">
-      <h2>About Company Page</h2><br>
-      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <br><button class="btn btn-default btn-lg">Get in Touch</button>
-    </div>
-    <div class="col-sm-4">
-      <span class="glyphicon glyphicon-signal logo"></span>
-    </div>-->
 <h2>Passenger Booking</h2>
 <h4>Status of booking is sent directly to Email. Process completion with land with ticket preview.</h4>
 <p>Please follow the below steps for easy booking. You begin with source and destination selection and then 
-filling out passengers information and finally with payment. Enjoy your journey! </p>
+filling out passengers information and finally with payment. Enjoy your journey! </p><br/><br/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <form  id="bookingform" action="BookingServlet" method="post" role="form">
-<div class="container-fluid bg-3 text-center">    
+<div class="container text-center">    
 <div class="col-sm-2 form-group">
           <label> Source: </label>
 </div>
@@ -269,7 +265,28 @@ filling out passengers information and finally with payment. Enjoy your journey!
     </c:forEach>
             </select>
     </div>
-
+    <br/><br/>
+    <script>
+        $(document).ready(function() {
+    $('#datePicker')
+        .datepicker({
+            format: 'mm/dd/yyyy'
+        })
+        .on('changeDate', function(e) {
+            // Revalidate the date field
+            $('#eventForm').formValidation('revalidateField', 'date');
+        });
+    });
+        </script>
+<div class="form-group">
+        <label class="col-xs-3 control-label" style="width:20%">Date: </label>
+        <div class="col-xs-8 date" style="width: 63%">
+            <div class="input-group input-append date" id="datePicker">
+                <input type="text" class="form-control" name="date" />
+                <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+            </div>
+        </div>
+    </div>
 </div>
     <button class="btn btn-lg" style="float:right; background-color: #f4511e; color: white" type="submit">Next</button>
 </form>

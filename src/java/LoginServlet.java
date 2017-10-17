@@ -40,6 +40,7 @@ public class LoginServlet extends HttpServlet {
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery("SELECT * FROM users");
             boolean status = false;
+            
              while (rs.next()) {
                  String user = rs.getString(2);
                  String pass = rs.getString(3);
@@ -58,7 +59,7 @@ public class LoginServlet extends HttpServlet {
              }
              if(status == false){
                  System.out.print("Sorry, username or password error!");  
-                 request.getRequestDispatcher("index.html").include(request, response);
+                 request.getRequestDispatcher("index.jsp").include(request, response);
              } 
              out.close();
         } catch (SQLException ex) {
