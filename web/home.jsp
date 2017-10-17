@@ -205,6 +205,15 @@
     }
   }
   </style>
+  <script>
+      function validation(){
+          var source;
+          var destin;
+          var date;
+          
+          return true;
+      }
+      </script>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
@@ -245,8 +254,8 @@ filling out passengers information and finally with payment. Enjoy your journey!
           <label> Source: </label>
 </div>
            <div class="col-sm-3 form-group">
-    <select name="sourceList" class="form-control" id="sourceList" >
-                <option value="Select">Select</option>
+    <select name="sourceList" class="form-control" id="sourceList" required>
+                <option value="">--------Select-------</option>
                 <c:forEach var="s" items="${source}">
       <option value="${s}">${s}</option>
     </c:forEach>
@@ -258,8 +267,8 @@ filling out passengers information and finally with payment. Enjoy your journey!
     <label> Destination: </label>
     </div>
            <div class="col-sm-3 form-group">
-         <select name="destinationList" class="form-control" id="destinationList" >
-                <option value="Select">Select</option>
+         <select name="destinationList" class="form-control" id="destinationList" required>
+                <option value="">--------Select--------</option>
                 <c:forEach var="d" items="${destination}">
       <option value="${d}">${d}</option>
     </c:forEach>
@@ -274,7 +283,7 @@ filling out passengers information and finally with payment. Enjoy your journey!
         })
         .on('changeDate', function(e) {
             // Revalidate the date field
-            $('#eventForm').formValidation('revalidateField', 'date');
+            $('#bookingform').formValidation('revalidateField', 'date');
         });
     });
         </script>
@@ -282,13 +291,13 @@ filling out passengers information and finally with payment. Enjoy your journey!
         <label class="col-xs-3 control-label" style="width:20%">Date: </label>
         <div class="col-xs-8 date" style="width: 63%">
             <div class="input-group input-append date" id="datePicker">
-                <input type="text" class="form-control" name="date" />
+                <input type="text" class="form-control" placeholder="----Select----" name="date" required />
                 <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
         </div>
     </div>
 </div>
-    <button class="btn btn-lg" style="float:right; background-color: #f4511e; color: white" type="submit">Next</button>
+    <button class="btn btn-lg" style="float:right; background-color: #f4511e; color: white" type="submit" onclick="return validation()">Next</button>
 </form>
   </div>
 </div>
