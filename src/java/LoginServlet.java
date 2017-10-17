@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
   
@@ -30,7 +31,6 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)  
                     throws ServletException, IOException {  
-         
         response.setContentType("text/html");  
         PrintWriter out=response.getWriter();  
         String name=request.getParameter("username");  
@@ -47,7 +47,13 @@ public class LoginServlet extends HttpServlet {
                      HttpSession session=request.getSession();  
                      session.setAttribute("name",name);
                      status = true;
-                      request.getRequestDispatcher("success.html").include(request, response);  
+                     ArrayList<String> getList = sourceList(con);
+                      System.out.println(getList);
+                      request.setAttribute("source", getList);
+                     ArrayList<String> destinList = destinationList(con);
+                     System.out.println(destinList);
+                     request.setAttribute("destination", destinList);
+                      request.getRequestDispatcher("home.jsp").include(request, response);  
                      } 
              }
              if(status == false){
@@ -58,5 +64,37 @@ public class LoginServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }  
+    }
+   
+    public ArrayList<String> sourceList(Connection con){
+         ArrayList<String> listName = new ArrayList<String>();
+        try {
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM path");
+            while (rs.next()) {
+                 String source = rs.getString(2);
+                 listName.add(source);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listName;
+    }
+    
+    public ArrayList<String> destinationList(Connection con){
+         ArrayList<String> listName = new ArrayList<String>();
+        try {
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM path");
+            while (rs.next()) {
+                 String source = rs.getString(3);
+                 listName.add(source);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listName;
+    }
 }
