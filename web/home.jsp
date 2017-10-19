@@ -229,7 +229,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#about">Booking</a></li>
+        <li><a href="#about">BOOKING</a></li>
         <li><a href="#services">SERVICES</a></li>
         <li><a href="#portfolio">PORTFOLIO</a></li>
        <!-- <li><a href="#pricing">PRICING</a></li> -->
@@ -244,9 +244,10 @@
 <div id="about" class="container-fluid">
   <div class="row">
 <h2>Passenger Booking</h2>
-<h4>Status of booking is sent directly to Email. Process completion with land with ticket preview.</h4>
+<h4><p>Welcome <i>${userfullname}</i></p>Status of booking is sent directly to Email. Process completion with land with ticket preview.</h4>
+
 <p>Please follow the below steps for easy booking. You begin with source and destination selection and then 
-filling out passengers information and finally with payment. Enjoy your journey! </p><br/><br/>
+filling out passengers information and finally with payment. Enjoy your journey!  </p><br>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <form  id="bookingform" action="BookingServlet" method="post" role="form">
 <div class="container text-center">    
@@ -291,10 +292,18 @@ filling out passengers information and finally with payment. Enjoy your journey!
         <label class="col-xs-3 control-label" style="width:20%">Date: </label>
         <div class="col-xs-8 date" style="width: 63%">
             <div class="input-group input-append date" id="datePicker">
-                <input type="text" class="form-control" placeholder="----Select----" name="date" required />
+                <input type="text" class="form-control" placeholder="----Select----" name="date" id="date" required />
                 <span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
         </div>
+    </div><br/>
+    <div class="form-group">
+        <div class="col-sm-2 form-group">
+    <label> passengers: </label>
+    </div>
+         <div class="col-sm-3 form-group">
+             <input type="number" class="form-control" min="0" placeholder="----Select----" name="passengers" id="passengers" required  />
+         </div>
     </div>
 </div>
     <button class="btn btn-lg" style="float:right; background-color: #f4511e; color: white" type="submit" onclick="return validation()">Next</button>

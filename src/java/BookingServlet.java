@@ -6,6 +6,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +30,26 @@ public class BookingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
+        PrintWriter out=response.getWriter();  
+        String src=request.getParameter("sourceList");
+        String dest=request.getParameter("destinationList");
+        String date =  request.getParameter("date");
+        String NoOfpass =  request.getParameter("passengers");
+        System.out.println(src);
+        System.out.println(dest);
+        System.out.println(date);
+        System.out.println(NoOfpass);
+        
+        PrintWriter writer = response.getWriter();
+         
+//        // build HTML code
+//        String htmlRespone = "<html>";
+//        htmlRespone += "<h2>Your username is: <br/>";      
+//        htmlRespone += "Your password is: </h2>";    
+//        htmlRespone += "</html>";
+//        writer.println(htmlRespone);
+        
+        request.getRequestDispatcher("booking.jsp").include(request, response);
     }
 
 }

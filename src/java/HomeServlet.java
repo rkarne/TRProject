@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-
 import DBUtils.DBConnection;
 import java.io.IOException;  
 import java.io.PrintWriter;  
@@ -15,58 +14,31 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-  
 import javax.servlet.ServletException;  
 import javax.servlet.http.HttpServlet;  
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;  
-import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author rkarne
- */
-public class LoginServlet extends HttpServlet {
-    
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)  
-                    throws ServletException, IOException {  
-        response.setContentType("text/html");  
-        PrintWriter out=response.getWriter();  
-        String name=request.getParameter("username");  
-        String password=request.getParameter("password");  
-        try {
-            Connection con = DBConnection.getConnection();
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM users");
-            boolean status = false;
-            
-             while (rs.next()) {
-                 String user = rs.getString(2);
-                 String pass = rs.getString(3);
-                 String fullName = rs.getString(4);
-                 if(password.equals(pass) && name.equals(user)){ 
-                     HttpSession session=request.getSession();  
-                     session.setAttribute("name",name);
-                      session.setAttribute("userfullname",fullName);
-                     status = true;
-                     ArrayList<String> getList = sourceList(con);
-                      request.setAttribute("source", getList);
+    public class HomeServlet extends HttpServlet {  
+            @Override
+            protected void doGet(HttpServletRequest request, HttpServletResponse response)  
+                                    throws ServletException, IOException {  
+                response.setContentType("text/html");  
+                PrintWriter out=response.getWriter(); 
+                Connection con = null;
+                try {
+                    con = DBConnection.getConnection();
+                } catch (SQLException ex) {
+                    Logger.getLogger(HomeServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                    ArrayList<String> getList = sourceList(con);
+                     request.setAttribute("source", getList);
                      ArrayList<String> destinList = destinationList(con);
                      request.setAttribute("destination", destinList);
-                      request.getRequestDispatcher("home.jsp").include(request, response);  
-                     } 
-             }
-             if(status == false){
-                 System.out.print("Sorry, username or password error!");  
-                 request.getRequestDispatcher("index.jsp").include(request, response);
-             } 
-             out.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+                     request.getRequestDispatcher("home.jsp").include(request, response);  
+                     out.close();  
         }
-    }
-   
+            
     public ArrayList<String> sourceList(Connection con){
          ArrayList<String> listName = new ArrayList<String>();
         try {
@@ -99,4 +71,4 @@ public class LoginServlet extends HttpServlet {
         return listName;
     
     }
-}
+    }  
