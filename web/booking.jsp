@@ -209,7 +209,7 @@
     padding: 6px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    border: 2px solid black;
+    border: 2px solid grey;
     border-radius: 4px;
 }
   </style>
@@ -228,11 +228,12 @@ $(document).ready(function(){
        for(i=0;i<value; i++){
           var count = i+1;
           $('#rows').append("<h4 style='color:#f4511e'>Passenger "+count+"</h4>"); 
-          $('#rows').append("<h4>Passenger Name: <input class='textclass' id='pass_name_"+count+"' type='text'required/></h4>"); 
-          $('#rows').append("<h4>Passenger Age: &nbsp &nbsp <input class='textclass' id='pass_age_"+count+"' type='number' min='0' required/></h4><br/>"); 
+          $('#rows').append("<h4>Passenger Name: <input name='passName' class='textclass' id='pass_name_"+count+"' type='text'required/></h4>"); 
+          $('#rows').append("<h4>Passenger Age: &nbsp &nbsp <input name='passAge' class='textclass' id='pass_age_"+count+"' type='number' min='0' required/></h4><br/>"); 
         }
     }
 });
+
 </script>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -263,7 +264,7 @@ $(document).ready(function(){
 <h2>Passenger Information</h2>
 <h4><p >Welcome <i style='color:#f4511e;'>${userfullname}</i></p></h4>
 <h4>Status of booking is sent directly to Email. Proceed  with passengers information.</h4>
-<p> <span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span>Please review your trip details and then proceed to ticket preview. Enjoy your journey! </p>
+<p> <span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span>Please review your trip details and then proceed. Enjoy your journey! </p>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <form  id="passengersform" action="Passengers" method="post" role="form">
@@ -272,15 +273,15 @@ $(document).ready(function(){
 	<div class="span4">
             <h4><span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span> <u> Review Travelling Plan</u> </h4>
              <div class="col-sm-4" style="background-color:#FEFFB1;">
-                 <h4><span style='color:#f4511e'>Source: </span> ${src}</h4>
+                 <h4><span style='color:#f4511e'>Train Source: </span> ${src}</h4>
                  <h4> <span style='color:#f4511e'>Journey Date: </span>${date}</h4>
              </div>
              <div class="col-sm-4" style="background-color:#FEFFB1;">
-                  <h4><span style='color:#f4511e'>Destination: </span> ${des}</h4>
+                  <h4><span style='color:#f4511e'>Train Destination: </span> ${des}</h4>
                   <h4><span style='color:#f4511e'>No Of Passengers: </span>${pass}</h4>
              </div>  
             <div class="col-sm-4" style="background-color:#FEFFB1;">
-                <img src="images/source.gif" alt="imagelogo" style="height:120px;">
+                <center>  <img src="images/source.gif" alt="imagelogo" style="height:120px;"></center>
              </div>  
         </div>
         
@@ -291,7 +292,7 @@ $(document).ready(function(){
                  
              </div>
         </div>
-             <center>     <button class="btn btn-lg" style=" background-color: #f4511e; color: white" type="submit" >Next</button></center>
+             <center>     <button class="btn btn-lg" style=" background-color: #f4511e; color: white" type="submit">Booking</button></center>
         </div>    
     </div>
 </form>
