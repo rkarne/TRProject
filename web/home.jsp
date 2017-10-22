@@ -278,13 +278,19 @@ filling out passengers information and finally with payment. Enjoy your journey!
     <br/><br/>
     <script>
         $(document).ready(function() {
+            var user = '<%= session.getAttribute("userfullname") %>';
+     console.log(user);
+    if(user === null || user === '' || user === "" || user === undefined || user === 'null'){
+        alert('Your session is expried. Please login again');
+        window.location.href = "index.jsp";
+    }       
     $('#datePicker')
         .datepicker({
             format: 'mm/dd/yyyy'
         })
         .on('changeDate', function(e) {
             // Revalidate the date field
-            $('#bookingform').formValidation('revalidateField', 'date');
+           // $('#bookingform').formValidation('revalidateField', 'date');
         });
     });
         </script>

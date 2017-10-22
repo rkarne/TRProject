@@ -207,15 +207,23 @@
   </style>
 <script>
 $(document).ready(function(){
-var passengers = '<%= session.getAttribute("pass") %>';
-var value = parseInt(passengers);
-var i;
-for(i=0;i<value; i++){
-    var count = i+1;
-      $('#rows').append("<h4 style='color:#f4511e'>Passenger "+count+"</h4>"); 
-    $('#rows').append("<h4>Passenger Name: <input id='pass_name_"+count+"' type='text'required/></h4>"); 
-      $('#rows').append("<h4>Passenger Age: <input id='pass_age_"+count+"' type='number' min='0' required/></h4><br/>"); 
-}  
+    var user = '<%= session.getAttribute("userfullname") %>';
+     console.log(user);
+    if(user === null || user === '' || user === "" || user === undefined || user === 'null'){
+        alert('Your session is expried. Please login again');
+        window.location.href = "index.jsp";
+    }
+    else {
+       var passengers = '<%= session.getAttribute("pass") %>';
+       var value = parseInt(passengers);
+       var i;
+       for(i=0;i<value; i++){
+          var count = i+1;
+          $('#rows').append("<h4 style='color:#f4511e'>Passenger "+count+"</h4>"); 
+          $('#rows').append("<h4>Passenger Name: <input id='pass_name_"+count+"' type='text'required/></h4>"); 
+          $('#rows').append("<h4>Passenger Age: <input id='pass_age_"+count+"' type='number' min='0' required/></h4><br/>"); 
+        }
+    }
 });
 </script>
 </head>
