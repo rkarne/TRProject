@@ -231,6 +231,7 @@
       <ul class="nav navbar-nav navbar-right">
            <li><a href="home.jsp">HOME</a></li>
         <li><a href="#about">TICKET</a></li>
+        <li><a href="javascript:history.back()">PASSENGERS</a></li>
         <li><a href="LogoutServlet">LOGOUT</a></li> 
       </ul>
     </div>
@@ -244,24 +245,29 @@
 <h2>Ticket Information</h2>
 <h4><p >Welcome <i style='color:#f4511e;'>${userfullname}</i></p>
 <h4>Status of booking is sent directly to Email. Next step payment details.</h4>
+
 </div>
     <div class="col-lg-3">
             <img src="images/source.gif" alt="imagelogo" style="height:190px; width: 350px; float: right;">
         </div>
-<p> <span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span>Please review your ticket details and fares then proceed with payment steps. Enjoy your journey! </p><br/><br/>
+<p> <span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span>Please review your ticket details and fares then proceed with payment steps. Enjoy your journey! </p>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <form  id="ticketform" action="" method="post" role="form">
     <div class="container-fluid well">
         <div class="row-fluid">
 	<div class="span4">
-            <h4><span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span> <u> Ticket Preview</u> </h4>
-             <div class="col-sm-6" style="background-color:#FEFFB1;">
+            <h4><span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span> <u> Ticket Preview</u>&nbsp;&nbsp; &nbsp; 
+                <i style="color: #f4511e;"> Per head: $30.00 usd </i> </h4>
+             <div class="col-sm-4" style="background-color:#FEFFB1;">
                  <h4><span style='color:#f4511e'>Source: </span> ${src}</h4>
                  <h4> <span style='color:#f4511e'>Journey Date: </span>${date}</h4>
              </div>
-             <div class="col-sm-6" style="background-color:#FEFFB1;">
+             <div class="col-sm-4" style="background-color:#FEFFB1;">
                   <h4><span style='color:#f4511e'>Destination: </span> ${des}</h4>
                   <h4><span style='color:#f4511e'>No Of Passengers: </span>${pass}</h4>
+             </div> 
+             <div class="col-sm-4" style="background-color:#FEFFB1;">
+                <img src="images/icons.png" alt="imagelogo" style="height:120px;">
              </div>  
         </div>
               <div class="span4" >

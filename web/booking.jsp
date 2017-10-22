@@ -204,6 +204,14 @@
         font-size: 150px;
     }
   }
+  .textclass {
+    width: 85%;
+    padding: 6px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 4px;
+}
   </style>
 <script>
 $(document).ready(function(){
@@ -220,8 +228,8 @@ $(document).ready(function(){
        for(i=0;i<value; i++){
           var count = i+1;
           $('#rows').append("<h4 style='color:#f4511e'>Passenger "+count+"</h4>"); 
-          $('#rows').append("<h4>Passenger Name: <input id='pass_name_"+count+"' type='text'required/></h4>"); 
-          $('#rows').append("<h4>Passenger Age: <input id='pass_age_"+count+"' type='number' min='0' required/></h4><br/>"); 
+          $('#rows').append("<h4>Passenger Name: <input class='textclass' id='pass_name_"+count+"' type='text'required/></h4>"); 
+          $('#rows').append("<h4>Passenger Age: &nbsp &nbsp <input class='textclass' id='pass_age_"+count+"' type='number' min='0' required/></h4><br/>"); 
         }
     }
 });
@@ -254,6 +262,8 @@ $(document).ready(function(){
   <div class="row">
 <h2>Passenger Information</h2>
 <h4><p >Welcome <i style='color:#f4511e;'>${userfullname}</i></p></h4>
+<h4>Status of booking is sent directly to Email. Proceed  with passengers information.</h4>
+<p> <span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span>Please review your trip details and then proceed to ticket preview. Enjoy your journey! </p>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <form  id="passengersform" action="Passengers" method="post" role="form">

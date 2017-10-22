@@ -29,8 +29,11 @@ public class Passengers extends HttpServlet {
  protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
+          
+         String passengers=request.getParameter("passengers");
+         
+        
           request.getRequestDispatcher("ticket.jsp").include(request, response);  
-          ;  
+          
     }
 }
