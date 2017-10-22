@@ -241,7 +241,7 @@
 <div id="about" class="container-fluid">
   <div class="row">
       <div class="col-lg-9">
-<h2>Review Ticket</h2>
+<h2>Ticket Information</h2>
 <h4><p >Welcome <i style='color:#f4511e;'>${userfullname}</i></p>
 <h4>Status of booking is sent directly to Email. Next step payment details.</h4>
 </div>
@@ -250,7 +250,30 @@
         </div>
 <p> <span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span>Please review your ticket details and fares then proceed with payment steps. Enjoy your journey! </p><br/><br/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<form  id="passengersform" action="BookingServlet" method="post" role="form">
+<form  id="ticketform" action="" method="post" role="form">
+    <div class="container-fluid well">
+        <div class="row-fluid">
+	<div class="span4">
+            <h4><span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span> <u> Ticket Preview</u> </h4>
+             <div class="col-sm-6" style="background-color:#FEFFB1;">
+                 <h4><span style='color:#f4511e'>Source: </span> ${src}</h4>
+                 <h4> <span style='color:#f4511e'>Journey Date: </span>${date}</h4>
+             </div>
+             <div class="col-sm-6" style="background-color:#FEFFB1;">
+                  <h4><span style='color:#f4511e'>Destination: </span> ${des}</h4>
+                  <h4><span style='color:#f4511e'>No Of Passengers: </span>${pass}</h4>
+             </div>  
+        </div>
+              <div class="span4" >
+            <p style="margin-top: 180px;"><span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span>
+                Carefully verify the passengers information. </p>
+             <div id="getpass">
+                 
+             </div>
+        </div>
+             <center>     <button class="btn btn-lg" style=" background-color: #f4511e; color: white" type="submit" >Next</button></center>
+        </div>    
+    </div>
  </form>
   </div>
 </div>
