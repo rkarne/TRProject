@@ -4,10 +4,7 @@
     Author     : rkarne
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"session="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -209,16 +206,7 @@
   }
   </style>
   <script>
-      function validation(){
-          var source;
-          var destin;
-          var date;
-          
-          return true;
-      }
-      </script>
-      <script>
-$(document).ready(function(){
+    $(document).ready(function(){
   // Add smooth scrolling to all links in navbar + footer link
    var user = '<%= session.getAttribute("userfullname") %>';
      console.log(user);
@@ -227,7 +215,7 @@ $(document).ready(function(){
         window.location.href = "index.jsp";
     }
 });
-</script>
+      </script>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
@@ -244,8 +232,7 @@ $(document).ready(function(){
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
            <li><a href="home.jsp">HOME</a></li>
-        <li><a href="#about">TICKET</a></li>
-        <li><a href="javascript:history.back()">PASSENGERS</a></li>
+        <li><a href="#about">RESERVATION</a></li>
         <li><a href="LogoutServlet">LOGOUT</a></li> 
       </ul>
     </div>
@@ -255,79 +242,160 @@ $(document).ready(function(){
 <!-- Container (About Section) -->
 <div id="about" class="container-fluid">
   <div class="row">
-      <div class="col-lg-9">
-<h2>Ticket Information</h2>
-<h4><p >Welcome <i style='color:#f4511e;'>${userfullname}</i></p>
-<h4>Status of booking is sent directly to Email. Next step payment details.</h4>
-
-</div>
+<div class="col-lg-9">
+       <h2>CONFIRM BOOKING</h2>
+       <h4><p >Thank you <i style='color:#f4511e;'>${userfullname}</i></p> & visit again.</h4>
+        <h4>Status of booking is sent directly to Email.</h4>
+   </div>
     <div class="col-lg-3">
-            <img src="images/source.gif" alt="imagelogo" style="height:190px; width: 350px; float: right;">
-        </div>
-<p> <span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span>Please review your ticket details and fares then proceed with payment steps. Enjoy your journey! </p>
+            <img src="images/train.gif" alt="imagelogo" style="height:190px; width: 350px; float: right;">
+    </div>
+<p> <span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span>
+    Booking confirmation & payment is successful. Please review train and ticket details. Wish you happy journey! </p>
 
 
-<form  id="ticketform" action="payment.jsp" method="post" role="form">
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<form  id="passengersform" action="" method="post" role="form">
     <div class="container well">
-        <div class="row-fluid">
-	<div class="span4">
-            <h4><span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span> <u> Ticket Preview</u>&nbsp;&nbsp; &nbsp; 
-                <i style="color: #f4511e;"> Per head: $30.00 usd </i> </h4>
-             <div class="col-sm-4" style="background-color:#FEFFB1;">
-                 <h4><span style='color:#f4511e'>Train Source: </span> ${src}</h4>
-                 <h4> <span style='color:#f4511e'>Journey Date: </span>${date}</h4>
-             </div>
-             <div class="col-sm-4" style="background-color:#FEFFB1;">
-                  <h4><span style='color:#f4511e'>Train Destination: </span> ${des}</h4>
-                  <h4><span style='color:#f4511e'>No Of Passengers: </span>${pass}</h4>
-             </div> 
-             <div class="col-sm-4" style="background-color:#FEFFB1;">
-                 <center>  <img src="images/icons.png" alt="imagelogo" style="height:120px;"></center>
-             </div>  
-        </div>
-              <div class="span4" >
-            <p style="margin-top: 180px;"><span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span>
-                Carefully verify the Baggage allowance.</p> 
-            <div  class="col-lg-12" style="background-color:#FEFFB1; color: black;">
-              
-            <p> 1 PERSONAL ITEM</p>
-            <p> Max. 11.5 kg (25lb.),  Max. 43 x 15 x 33 cm (17 x 6 x 13 in.)</p>
-            <p>   AND </p>
-            <p>  1 LARGE ITEM</p>
-            <p>   Max. 23 kg (50lb.),  Max. 158 linear cm (62 li. in.)</p>
-            <p>   OR</p>
-            <p>    2 SMALL ITEMS </p>
-            <p>   Max. 11.5 kg (25 lb.) each ,  Max. 54.5 x 39.5 x 23 cm (21.5 x 15.5 x 9 in.) each</p>
-            <p>    OVERWEIGHT ITEM(S): Items over 23kg (50lb.) are NOT permitted on board.</p>
-              <p>   ADDITIONAL CARRY-ON ITEM: 1 item allowed Max 23 kg (50lb.) $40 (tax included) per direction.
-            </p>
+        <div class="row">
+            <div class="col-sm-4">
+                 <p> <span style="color: red" class="glyphicon glyphicon-ok-sign">&nbsp; </span> Your Name:  </p>
             </div>
-           
-             <div id="getpass">
-                    <p style="margin-top: 410px;"><span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span>
-                Carefully verify the passengers information.</p> 
-<!--                 <h4>Passengers Information</h4>-->
-                 <div class="col-sm-4" style="background-color:#FEFFB1;">
-                 <c:forEach begin="0" end="${fn:length(passengerName) - 1}" var="index">
-                         <h4> Name: <c:out value="${passengerName[index]}"/></h4>
-                 </c:forEach>
-                 </div>
-                 <div class="col-sm-4" style="background-color:#FEFFB1;">
-                     <c:forEach begin="0" end="${fn:length(passengerAge) - 1}" var="index">
-                         <h4> Age: <c:out value="${passengerAge[index]}"/></h4>
-                 </c:forEach>
-                 </div>
-                 <div class="col-sm-4" style="background-color:#ffdf32; height: auto;">
-                     <h4>Ticket Fare: <i style='color:#f4511e;'>$ ${fare} .00</i></h4>
-                     <h4>G.S.T/H.S.T: <i style='color:#f4511e;'>$ ${hst}0</i></h4>
-                     <h4>P.S.T: <i style='color:#f4511e;'>$ 0.00</i></h4> 
-                     <hr/>
-                      <h4>Total: <i style='color:#f4511e;'>$ ${total}0</i></h4> 
-                 </div>
-             </div>
+             <div class="col-sm-8">
+                  <p> ${name} </p>
+            </div>
         </div>
-             <center>     <button class="btn btn-lg" style=" background-color: #f4511e; color: white" type="submit" >Payment</button></center>
-        </div>    
+        <div class="row">
+            <div class="col-sm-4">
+                 <p> <span style="color: red" class="glyphicon glyphicon-ok-sign">&nbsp; </span>Ticket NO:  </p>
+            </div>
+             <div class="col-sm-8">
+                  <p> 256${cardNumber}11-${des}-SFE</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                 <p> <span style="color: red" class="glyphicon glyphicon-ok-sign">&nbsp; </span>Train Name:  </p>
+            </div>
+             <div class="col-sm-8">
+                  <p> ${src}-${des} Super Fast Express </p>
+            </div>
+        </div>
+            <div class="row">
+            <div class="col-sm-4">
+                 <p> <span style="color: red" class="glyphicon glyphicon-ok-sign">&nbsp; </span>Train NO:  </p>
+            </div>
+             <div class="col-sm-8">
+                  <p> 256${cardNumber}11 </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                 <p> <span style="color: red" class="glyphicon glyphicon-ok-sign">&nbsp; </span>Train Time:  </p>
+            </div>
+             <div class="col-sm-8">
+                  <p> 06.10 AM </p>
+            </div>
+        </div>
+            <div class="row">
+            <div class="col-sm-4">
+                 <p> <span style="color: red" class="glyphicon glyphicon-ok-sign">&nbsp; </span>Source:  </p>
+            </div>
+             <div class="col-sm-8">
+                  <p> ${src}  </p>
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-sm-4">
+                 <p> <span style="color: red" class="glyphicon glyphicon-ok-sign">&nbsp; </span>Destination:  </p>
+            </div>
+             <div class="col-sm-8">
+                  <p> ${des}  </p>
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-sm-4">
+                 <p> <span style="color: red" class="glyphicon glyphicon-ok-sign">&nbsp; </span>Date:  </p>
+            </div>
+             <div class="col-sm-8">
+                  <p> ${date}  </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                 <p> <span style="color: red" class="glyphicon glyphicon-ok-sign">&nbsp; </span>Card Number:  </p>
+            </div>
+             <div class="col-sm-8">
+                  <p> ${cardNumber}  </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                 <p> <span style="color: red" class="glyphicon glyphicon-ok-sign">&nbsp; </span>Card Expiry:  </p>
+            </div>
+             <div class="col-sm-8">
+                  <p> ${ExpDate}  </p>
+            </div>
+        </div>
+        
+         <div class="row">
+            <div class="col-sm-4">
+                 <p> <span style="color: red" class="glyphicon glyphicon-ok-sign">&nbsp; </span>No Of Passengers:  </p>
+            </div>
+             <div class="col-sm-8">
+                  <p> ${pass}  </p>
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-sm-4">
+                 <p> <span style="color: red" class="glyphicon glyphicon-ok-sign">&nbsp; </span> Address: </p>
+            </div>
+             <div class="col-sm-8">
+                  <p> ${street}  </p>
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-sm-4">
+                 <p> <span style="color: red" class="glyphicon glyphicon-ok-sign">&nbsp; </span>City:  </p>
+            </div>
+             <div class="col-sm-8">
+                  <p> ${city}  </p>
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-sm-4">
+                 <p> <span style="color: red" class="glyphicon glyphicon-ok-sign">&nbsp; </span>Province:  </p>
+            </div>
+             <div class="col-sm-8">
+                  <p> ${state}  </p>
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-sm-4">
+                 <p> <span style="color: red" class="glyphicon glyphicon-ok-sign">&nbsp; </span>Zip:  </p>
+            </div>
+             <div class="col-sm-8">
+                  <p> ${zip} </p>
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-sm-4">
+                 <p> <span style="color: red" class="glyphicon glyphicon-ok-sign">&nbsp; </span>Phone:  </p>
+            </div>
+             <div class="col-sm-8">
+                  <p> ${phone}  </p>
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-sm-4">
+                 <p> <span style="color: red" class="glyphicon glyphicon-ok-sign">&nbsp; </span>Email:  </p>
+            </div>
+             <div class="col-sm-8">
+                  <p> ${email}  </p>
+            </div>
+        </div>
+         
     </div>
  </form>
   </div>
@@ -340,7 +408,11 @@ $(document).ready(function(){
   <p>Contact <a href="#" title="Click here">muqeed27@gmail.com</a></p>
 </footer>
 
-
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  
+</script>
 
 </body>
 </html>
