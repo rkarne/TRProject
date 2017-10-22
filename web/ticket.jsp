@@ -205,27 +205,15 @@
     }
   }
   </style>
-<script>
-$(document).ready(function(){
-    var user = '<%= session.getAttribute("userfullname") %>';
-     console.log(user);
-    if(user === null || user === '' || user === "" || user === undefined || user === 'null'){
-        alert('Your session is expried. Please login again');
-        window.location.href = "index.jsp";
-    }
-    else {
-       var passengers = '<%= session.getAttribute("pass") %>';
-       var value = parseInt(passengers);
-       var i;
-       for(i=0;i<value; i++){
-          var count = i+1;
-          $('#rows').append("<h4 style='color:#f4511e'>Passenger "+count+"</h4>"); 
-          $('#rows').append("<h4>Passenger Name: <input id='pass_name_"+count+"' type='text'required/></h4>"); 
-          $('#rows').append("<h4>Passenger Age: <input id='pass_age_"+count+"' type='number' min='0' required/></h4><br/>"); 
-        }
-    }
-});
-</script>
+  <script>
+      function validation(){
+          var source;
+          var destin;
+          var date;
+          
+          return true;
+      }
+      </script>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
@@ -241,8 +229,8 @@ $(document).ready(function(){
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-           <li><a href="HomeServlet">HOME</a></li>
-        <li><a href="#about">PASSENGERS</a></li>
+           <li><a href="home.jsp">HOME</a></li>
+        <li><a href="#about">TICKET</a></li>
         <li><a href="LogoutServlet">LOGOUT</a></li> 
       </ul>
     </div>
@@ -252,57 +240,20 @@ $(document).ready(function(){
 <!-- Container (About Section) -->
 <div id="about" class="container-fluid">
   <div class="row">
-<h2>Passenger Information</h2>
-<h4><p >Welcome <i style='color:#f4511e;'>${userfullname}</i></p></h4>
-
+      <div class="col-lg-9">
+<h2>Review Ticket</h2>
+<h4><p >Welcome <i style='color:#f4511e;'>${userfullname}</i></p>
+<h4>Status of booking is sent directly to Email. Next step payment details.</h4>
+</div>
+    <div class="col-lg-3">
+            <img src="images/source.gif" alt="imagelogo" style="height:190px; width: 350px; float: right;">
+        </div>
+<p> <span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span>Please review your ticket details and fares then proceed with payment steps. Enjoy your journey! </p><br/><br/>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<form  id="passengersform" action="Passengers" method="post" role="form">
-    <div class="container-fluid well">
-        <div class="row-fluid">
-	<div class="span4">
-            <h4><span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span> <u> Review Travelling Plan</u> </h4>
-             <div class="col-sm-4" style="background-color:#FEFFB1;">
-                 <h4><span style='color:#f4511e'>Source: </span> ${src}</h4>
-                 <h4> <span style='color:#f4511e'>Journey Date: </span>${date}</h4>
-             </div>
-             <div class="col-sm-4" style="background-color:#FEFFB1;">
-                  <h4><span style='color:#f4511e'>Destination: </span> ${des}</h4>
-                  <h4><span style='color:#f4511e'>No Of Passengers: </span>${pass}</h4>
-             </div>  
-            <div class="col-sm-4" style="background-color:#FEFFB1;">
-                <img src="images/source.gif" alt="imagelogo" style="height:120px;">
-             </div>  
-        </div>
-        
-        <div class="span4" >
-            <p style="margin-top: 180px; background-color:#FEFFB1;"><span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span>
-                Please fill out passengers information travelling onboard. </p><br/>
-             <div id="rows">
-                 
-             </div>
-        </div>
-             <center>     <button class="btn btn-lg" style=" background-color: #f4511e; color: white" type="submit" >Next</button></center>
-        </div>    
-    </div>
-</form>
+<form  id="passengersform" action="BookingServlet" method="post" role="form">
+ </form>
   </div>
-</div>          
-            
-             
-<!--        <div class="span2">
-            <div class="btn-group">
-              <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
-                    Action 
-                    <span class="icon-cog icon-white"></span><span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a href="#"><span class="icon-wrench"></span> Modify</a></li>
-                    <li><a href="#"><span class="icon-trash"></span> Delete</a></li>
-                </ul>
-            </div>
-        </div>-->
-
-
+</div>
 
 <footer class="container-fluid text-center">
   <a href="#myPage" title="To Top">
@@ -310,6 +261,13 @@ $(document).ready(function(){
   </a>
   <p>Contact <a href="#" title="Click here">muqeed27@gmail.com</a></p>
 </footer>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  
+</script>
+
 </body>
 </html>
 

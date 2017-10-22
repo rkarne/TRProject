@@ -243,11 +243,18 @@
 <!-- Container (About Section) -->
 <div id="about" class="container-fluid">
   <div class="row">
-<h2>Passenger Booking</h2>
-<h4><p >Welcome <i style='color:#f4511e;'>${userfullname}</i></p>Status of booking is sent directly to Email. Process completion with land with ticket preview.</h4>
+      <div class="col-lg-9">
+            <h2>Passenger Booking</h2>
+<h4><p >Welcome <i style='color:#f4511e;'>${userfullname}</i></p>
+    Status of booking is sent directly to Email. Process completion with land with ticket preview.</h4>
+        </div>
+        <div class="col-lg-3">
+            <img src="images/source.gif" alt="imagelogo" style="height:180px; width: 350px; float: right;">
+        </div>
+      
+<p> <span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span>Please follow the below steps for easy booking. You begin with source and destination selection and then 
+filling out passengers information and finally with payment. Enjoy your journey!  </p>
 
-<p>Please follow the below steps for easy booking. You begin with source and destination selection and then 
-filling out passengers information and finally with payment. Enjoy your journey!  </p><br>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <form  id="bookingform" action="BookingServlet" method="post" role="form">
 <div class="container well text-center">    

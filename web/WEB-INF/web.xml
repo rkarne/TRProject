@@ -25,6 +25,10 @@
         <servlet-name>HomeServlet</servlet-name>
         <servlet-class>HomeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Passengers</servlet-name>
+        <servlet-class>Passengers</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -44,6 +48,10 @@
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
         <url-pattern>/HomeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Passengers</servlet-name>
+        <url-pattern>/Passengers</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
