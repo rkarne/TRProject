@@ -244,15 +244,15 @@
 <div id="about" class="container-fluid">
   <div class="row">
 <h2>Passenger Booking</h2>
-<h4><p>Welcome <i>${userfullname}</i></p>Status of booking is sent directly to Email. Process completion with land with ticket preview.</h4>
+<h4><p >Welcome <i style='color:#f4511e;'>${userfullname}</i></p>Status of booking is sent directly to Email. Process completion with land with ticket preview.</h4>
 
 <p>Please follow the below steps for easy booking. You begin with source and destination selection and then 
 filling out passengers information and finally with payment. Enjoy your journey!  </p><br>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <form  id="bookingform" action="BookingServlet" method="post" role="form">
-<div class="container text-center">    
+<div class="container well text-center">    
 <div class="col-sm-2 form-group">
-          <label> Source: </label>
+          <label style='color:#f4511e'> Source: </label>
 </div>
            <div class="col-sm-3 form-group">
     <select name="sourceList" class="form-control" id="sourceList" required>
@@ -265,7 +265,7 @@ filling out passengers information and finally with payment. Enjoy your journey!
 
 
 <div class="col-sm-2 form-group">
-    <label> Destination: </label>
+    <label style='color:#f4511e'> Destination: </label>
     </div>
            <div class="col-sm-3 form-group">
          <select name="destinationList" class="form-control" id="destinationList" required>
@@ -289,7 +289,7 @@ filling out passengers information and finally with payment. Enjoy your journey!
     });
         </script>
 <div class="form-group">
-        <label class="col-xs-3 control-label" style="width:20%">Date: </label>
+        <label class="col-xs-3 control-label" style="width:20%; color:#f4511e">Date: </label>
         <div class="col-xs-8 date" style="width: 63%">
             <div class="input-group input-append date" id="datePicker">
                 <input type="text" class="form-control" placeholder="----Select----" name="date" id="date" required />
@@ -299,7 +299,7 @@ filling out passengers information and finally with payment. Enjoy your journey!
     </div><br/>
     <div class="form-group">
         <div class="col-sm-2 form-group">
-    <label> passengers: </label>
+    <label style='color:#f4511e'> passengers: </label>
     </div>
          <div class="col-sm-3 form-group">
              <input type="number" class="form-control" min="0" placeholder="----Select----" name="passengers" id="passengers" required  />

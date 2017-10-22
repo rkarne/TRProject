@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,7 +40,11 @@ public class BookingServlet extends HttpServlet {
         System.out.println(dest);
         System.out.println(date);
         System.out.println(NoOfpass);
-        
+         HttpSession session=request.getSession();  
+         session.setAttribute("src",src);
+         session.setAttribute("des",dest);
+         session.setAttribute("date",date);
+         session.setAttribute("pass",NoOfpass);
         PrintWriter writer = response.getWriter();
          
 //        // build HTML code

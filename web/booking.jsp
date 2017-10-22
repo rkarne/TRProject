@@ -205,15 +205,19 @@
     }
   }
   </style>
-  <script>
-      function validation(){
-          var source;
-          var destin;
-          var date;
-          
-          return true;
-      }
-      </script>
+<script>
+$(document).ready(function(){
+var passengers = '<%= session.getAttribute("pass") %>';
+var value = parseInt(passengers);
+var i;
+for(i=0;i<value; i++){
+    var count = i+1;
+      $('#rows').append("<h4 style='color:#f4511e'>Passenger "+count+"</h4>"); 
+    $('#rows').append("<h4>Passenger Name: <input id='pass_name_"+count+"' type='text'required/></h4>"); 
+      $('#rows').append("<h4>Passenger Age: <input id='pass_age_"+count+"' type='number' min='0' required/></h4><br/>"); 
+}  
+});
+</script>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
@@ -241,14 +245,55 @@
 <div id="about" class="container-fluid">
   <div class="row">
 <h2>Passenger Information</h2>
-<h4><p>Welcome <i>${userfullname}</i></p></h4>
+<h4><p >Welcome <i style='color:#f4511e;'>${userfullname}</i></p></h4>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <form  id="passengersform" action="" method="post" role="form">
-    
- </form>
+    <div class="container-fluid well">
+        <div class="row-fluid">
+	<div class="span4">
+            <i><h4><span style="color: red">*</span> <u>Review travelling plan.</u> </h4></i>
+             <div class="col-sm-4" style="background-color:#FEFFB1;">
+                 <h4><span style='color:#f4511e'>Source: </span> ${src}</h4>
+                 <h4> <span style='color:#f4511e'>Journey Date: </span>${date}</h4>
+             </div>
+             <div class="col-sm-4" style="background-color:#FEFFB1;">
+                  <h4><span style='color:#f4511e'>Destination: </span> ${des}</h4>
+                  <h4><span style='color:#f4511e'>No Of Passengers: </span>${pass}</h4>
+             </div>  
+            <div class="col-sm-4" style="background-color:#FEFFB1;">
+                <img src="images/source.gif" alt="imagelogo" style="height:120px;">
+             </div>  
+        </div>
+        
+        <div class="span4" >
+            <p style="margin-top: 180px;">Please fill out passengers information travelling onboard. </p><br/>
+             <div id="rows">
+                 
+             </div>
+        </div>
+             <center>     <button class="btn btn-lg" style=" background-color: #f4511e; color: white" type="submit" >Next</button></center>
+        </div>    
+    </div>
+</form>
   </div>
-</div>
+</div>          
+            
+             
+<!--        <div class="span2">
+            <div class="btn-group">
+              <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
+                    Action 
+                    <span class="icon-cog icon-white"></span><span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><span class="icon-wrench"></span> Modify</a></li>
+                    <li><a href="#"><span class="icon-trash"></span> Delete</a></li>
+                </ul>
+            </div>
+        </div>-->
+
+
 
 <footer class="container-fluid text-center">
   <a href="#myPage" title="To Top">
@@ -256,13 +301,6 @@
   </a>
   <p>Contact <a href="#" title="Click here">muqeed27@gmail.com</a></p>
 </footer>
-
-<script>
-$(document).ready(function(){
-  // Add smooth scrolling to all links in navbar + footer link
-  
-</script>
-
 </body>
 </html>
 
