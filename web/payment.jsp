@@ -205,15 +205,18 @@
     }
   }
   </style>
-  <script>
-      function validation(){
-          var source;
-          var destin;
-          var date;
-          
-          return true;
-      }
-      </script>
+
+      <script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+   var user = '<%= session.getAttribute("userfullname") %>';
+     console.log(user);
+    if(user === null || user === '' || user === "" || user === undefined || user === 'null'){
+        alert('Your session is expried. Please login again');
+        window.location.href = "index.jsp";
+    }
+});
+</script>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
@@ -241,11 +244,29 @@
 <!-- Container (About Section) -->
 <div id="about" class="container-fluid">
   <div class="row">
-<h2>Payment Information</h2>
+<!--<h2>Payment Information</h2>
 <h4> <p >Welcome <i style='color:#f4511e;'>${userfullname}</i></p>Status of booking is sent directly to Email. Process complete payment to confirm booking.</h4>
-<p> Enjoy your journey! </p>
+<p> Enjoy your journey! </p>-->
+
+  <div class="col-lg-9">
+       <h2>Payment Information</h2>
+       <h4><p >Welcome <i style='color:#f4511e;'>${userfullname}</i></p></h4>
+        <h4>Status of booking is sent directly to Email. Process complete payment to confirm booking.</h4>
+   </div>
+    <div class="col-lg-3">
+            <img src="images/train.gif" alt="imagelogo" style="height:190px; width: 350px; float: right;">
+    </div>
+<p> <span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span>Please review your ticket details and fares then proceed with payment. Enjoy your journey! </p>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <form  id="paymentform" action="" method="post" role="form">
+    <div class="container well">
+        <div class="row-fluid">
+        
+             <center>     <button class="btn btn-lg" style=" background-color: #f4511e; color: white" type="submit" >Confirm</button></center>
+       
+        </div>
+    </div>
  </form>
   </div>
 </div>
@@ -256,12 +277,6 @@
   </a>
   <p>Contact <a href="#" title="Click here">muqeed27@gmail.com</a></p>
 </footer>
-
-<script>
-$(document).ready(function(){
-  // Add smooth scrolling to all links in navbar + footer link
-  
-</script>
 
 </body>
 </html>

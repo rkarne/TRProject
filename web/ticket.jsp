@@ -217,6 +217,17 @@
           return true;
       }
       </script>
+      <script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+   var user = '<%= session.getAttribute("userfullname") %>';
+     console.log(user);
+    if(user === null || user === '' || user === "" || user === undefined || user === 'null'){
+        alert('Your session is expried. Please login again');
+        window.location.href = "index.jsp";
+    }
+});
+</script>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
@@ -257,7 +268,7 @@
 
 
 <form  id="ticketform" action="Payment" method="post" role="form">
-    <div class="container-fluid well">
+    <div class="container well">
         <div class="row-fluid">
 	<div class="span4">
             <h4><span style="color: red" class="glyphicon glyphicon-hand-right">&nbsp; </span> <u> Ticket Preview</u>&nbsp;&nbsp; &nbsp; 
@@ -329,11 +340,7 @@
   <p>Contact <a href="#" title="Click here">muqeed27@gmail.com</a></p>
 </footer>
 
-<script>
-$(document).ready(function(){
-  // Add smooth scrolling to all links in navbar + footer link
-  
-</script>
+
 
 </body>
 </html>
