@@ -244,7 +244,7 @@
   <div class="row">
 <div class="col-lg-9">
        <h2>CONFIRM BOOKING</h2>
-       <h4><p >Thank you <i style='color:#f4511e;'>${userfullname}</i></p> & visit again.</h4>
+       <h4><p >Thank you <i style='color:#f4511e;'>${userfullname}</i> & visit again.</p> </h4>
         <h4>Status of booking is sent directly to Email.</h4>
    </div>
     <div class="col-lg-3">
